@@ -17,13 +17,10 @@ export default function Layout() {
     setAnswers(ans);
   };
 
-  // useMemo(() => {
-  // }, [answers]);
   const filterAnswers = (isAnswerValid: boolean) =>
     answers.filter((item: any) => item === isAnswerValid).length;
 
   const percentage = ((currentIndex + 1) / quiz.length) * 100;
-  // console.log("answers", answers);
   return (
     <div className="layout">
       <div className="body">
@@ -56,7 +53,7 @@ export default function Layout() {
           </div>
           <div className="layout-body">
             {
-              currentIndex > quiz.length ?
+              ((currentIndex) >= quiz.length) ?
                   <div>
                     Your Score : 111
                     <button className="btn btn-light">Test Again</button>

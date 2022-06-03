@@ -21,9 +21,9 @@ export const QuestionCard = ({question, next}: any) => {
             <p>{question?.question}</p>
             <div className="options">
                 {
-                    options? options.map((o: string)=>{
-                        return   <div className="option">
-                            <button className="btn btn-light" disabled={!!answer} onClick={() => submit(o)}>{o}</button>
+                    options? options.map((o: string, i: number)=>{
+                        return   <div className="option" key={i}>
+                            <button className={`btn ${answer === o ? 'btn-dark' : 'btn-light'}`} disabled={!!answer} onClick={() => submit(o)}>{o}</button>
                         </div>
                     }) : null
                 }
