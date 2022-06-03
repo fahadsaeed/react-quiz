@@ -3,21 +3,26 @@ import StarFill from "../../assets/StarFill";
 import { quiz } from "../../utils/quiz";
 import "./index.scss";
 import { QuestionCard } from "../QuestionCard/QuestionCard";
-import {useState} from "react";
+import { useState, useMemo } from "react";
 
 export default function Layout() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [answers, setAnswers] = useState<any>([]);
 
-  const next = (answer: any) =>{
-    setCurrentIndex((currentIndex + 1));
+  const next = (answer: any) => {
+    setCurrentIndex(currentIndex + 1);
     const ans = [...answers];
     ans.push(!!answer);
     setAnswers(ans);
-  }
+  };
 
-  const percentage = ((currentIndex + 1) / quiz.length)*100;
-  console.log('answers', answers);
+  // useMemo(() => {
+  // }, [answers]);
+  const filterAnswers = (isAnswerValid: boolean) =>
+    answers.filter((item: any) => item === isAnswerValid).length;
+
+  const percentage = ((currentIndex + 1) / quiz.length) * 100;
+  // console.log("answers", answers);
   return (
     <div className="layout">
       <div className="body">
@@ -28,7 +33,9 @@ export default function Layout() {
           <div className="layout-header">
             <div className="question">
               <div className="question-title">
-                <h3>Question {currentIndex+1} of {quiz.length}</h3>
+                <h3>
+                  Question {currentIndex + 1} of {quiz.length}
+                </h3>
               </div>
               <div className="question-type">
                 <span>{quiz[currentIndex]?.category}</span>
@@ -42,13 +49,34 @@ export default function Layout() {
             </div>
           </div>
           <div className="layout-body">
-            <QuestionCard question={quiz[currentIndex]} next={(ans: any) => next(ans)}></QuestionCard>
+            <QuestionCard
+              question={quiz[currentIndex]}
+              next={(ans: any) => next(ans)}
+            ></QuestionCard>
           </div>
           <div className="footer-progress-bar">
+            <div className="score">
+              <div className="current-score">
+                Score:{" "}
+                {Math.floor((filterAnswers(true) / answers.length) * 100) || 0}%
+              </div>
+              <div className="max-score-estimate">
+                Max Score:{" "}
+                {100 - Math.floor((filterAnswers(false) / quiz.length) * 100)}%
+              </div>
+            </div>
             <ProgressBar>
-              <ProgressBar variant="success" now={67} key={1} />
-              <ProgressBar variant="warning" now={8} key={2} />
-              <ProgressBar variant="danger" now={12} key={3} />
+              <ProgressBar
+                variant="success"
+                now={Math.floor((filterAnswers(true) / quiz.length) * 100)}
+                key={1}
+              />
+              <ProgressBar
+                variant="warning"
+                now={Math.floor((filterAnswers(false) / quiz.length) * 100)}
+                key={2}
+              />
+              {/* <ProgressBar variant="danger" now={0} key={3} /> */}
             </ProgressBar>
           </div>
         </div>

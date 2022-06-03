@@ -23,6 +23,16 @@
     }
     .footer-progress-bar {
       //   padding: 30px 5.5rem;
+      .score {
+        display: flex;
+        justify-content: space-between;
+        .current-score,
+        .max-score-estimate {
+          color: #000;
+          font-size: 14px;
+          font-weight: 400;
+        }
+      }
       .progress {
         height: 23px;
         border: 1px solid #000;
