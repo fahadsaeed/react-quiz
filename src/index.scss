@@ -1,20 +1,19 @@
 button {
-    border-radius: 8px;
-    width: 100%;
-    min-height: 45px;
-    border: 1px solid #000000 !important;
-    &:hover{
-        background-color: #000000;
-        color: #ffffff;
-    }
+  border-radius: 8px;
+  width: 100%;
+  min-height: 45px;
+  border: 1px solid #000000 !important;
+  &:hover {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+  }
 }
 
-.star-svg{
-    stroke : #000000;
-    &.out-line{
-        path{
-            fill: #ffffff;
-
-        }
+.star-svg {
+  stroke: #000000;
+  &.out-line {
+    path {
+      fill: #ffffff;
     }
+  }
 }
