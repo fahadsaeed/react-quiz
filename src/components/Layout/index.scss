@@ -5,9 +5,38 @@
   align-items: center;
   margin: 0 22.3rem;
   .body {
-    padding: 30px 5.5rem;
-    border: 2px solid #ededed;
-    .layout-body {
+    border: 5px solid #ededed;
+    .layout-header-progress-bar {
+      .progress {
+        border-radius: 0;
+        background-color: #fff;
+        &-bar {
+          background-color: #a9aaa9;
+        }
+      }
+    }
+    .layout-text {
+      padding: 30px 5.5rem;
+      .layout-body {
+        min-height: 20rem;
+      }
+    }
+    .footer-progress-bar {
+      //   padding: 30px 5.5rem;
+      .progress {
+        height: 23px;
+        border: 1px solid #000;
+        background-color: #fff;
+        &-bar.bg-success {
+          background: #000 !important;
+        }
+        &-bar.bg-warning {
+          background: #717171 !important;
+        }
+        &-bar.bg-danger {
+          background: #d2d2d2 !important;
+        }
+      }
     }
   }
 }
