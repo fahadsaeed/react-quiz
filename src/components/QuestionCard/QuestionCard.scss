@@ -1,17 +1,25 @@
 .question-card{
+  p{
+    font-size: 20px;
+    &.answer{
+      font-size: 24px;
+      font-weight: 600;
+    }
+  }
   .options {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
     .option {
-      flex-basis: 46%;
-      margin: 4px;
-      button {
-        display: block;
-        border-radius: 8px;
-        outline: none;
-        width: 100%;
-      }
+      width: calc(50% - 10px);
     }
   }
 
+  button{
+    margin-bottom: 20px;
+    &:hover{
+      background-color: #000000;
+      color: #ffffff;
+    }
+  }
 }

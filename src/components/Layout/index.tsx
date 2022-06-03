@@ -33,15 +33,12 @@ export default function Layout() {
         <div className="layout-text">
           <div className="layout-header">
             <div className="question">
-              <div className="question-title">
-                <h3>
-                  Question {currentIndex + 1} of {quiz.length}
-                </h3>
-              </div>
               <div className="question-type">
+                <h3 className="mt-3 mb-2">Question {currentIndex+1} of {quiz.length}</h3>
+              <div className="question-type mb-2">
                 <span>{quiz[currentIndex]?.category}</span>
               </div>
-              <div className="question-rating">
+              <div className="question-rating d-flex gap-1">
                 <StarFill />
                 {quiz[currentIndex]?.difficulty === "medium" ||
                 quiz[currentIndex]?.difficulty === "hard" ? (
@@ -58,10 +55,14 @@ export default function Layout() {
             </div>
           </div>
           <div className="layout-body">
-            <QuestionCard
-              question={quiz[currentIndex]}
-              next={(ans: any) => next(ans)}
-            ></QuestionCard>
+            {
+              currentIndex > quiz.length ?
+                  <div>
+                    Your Score : 111
+                    <button className="btn btn-light">Test Again</button>
+                  </div> :
+                  <QuestionCard question={quiz[currentIndex]} next={(ans: any) => next(ans)} />
+            }
           </div>
           <div className="footer-progress-bar">
             <div className="score">
@@ -90,6 +91,7 @@ export default function Layout() {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 }
