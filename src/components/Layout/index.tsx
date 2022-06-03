@@ -1,4 +1,3 @@
-import StarOutline from "../../assets/StarOutline";
 import { ProgressBar } from "react-bootstrap";
 import StarFill from "../../assets/StarFill";
 import { quiz } from "../../utils/quiz";
@@ -12,23 +11,24 @@ export default function Layout() {
 
   const next = (answer: any) =>{
     setCurrentIndex((currentIndex + 1));
-    const ans = [...answer];
+    const ans = [...answers];
     ans.push(!!answer);
     setAnswers(ans);
   }
 
-
+  const percentage = ((currentIndex + 1) / quiz.length)*100;
+  console.log('answers', answers);
   return (
     <div className="layout">
       <div className="body">
         <div className="layout-header-progress-bar">
-          <ProgressBar now={75} />
+          <ProgressBar now={percentage} />
         </div>
         <div className="layout-text">
           <div className="layout-header">
             <div className="question">
               <div className="question-title">
-                <h3>Question 16 of 20</h3>
+                <h3>Question {currentIndex+1} of {quiz.length}</h3>
               </div>
               <div className="question-type">
                 <span>{quiz[currentIndex]?.category}</span>

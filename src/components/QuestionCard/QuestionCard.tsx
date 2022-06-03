@@ -34,7 +34,7 @@ export const QuestionCard = ({question, next}: any) => {
                 !!answer ?
                     <div className="d-flex flex-column justify-content-center align-items-center">
                         <p>{answer === question?.correct_answer ? 'Correct!' : 'Sorry!'} </p>
-                        <button onClick={() => next(answer)}>Next Question</button>
+                        <button onClick={() => next(answer === question?.correct_answer)}>Next Question</button>
                     </div> : null
             }
 
