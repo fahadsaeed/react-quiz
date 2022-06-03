@@ -1,6 +1,8 @@
 import StarFill from "../../assets/StarFill";
 import StarOutline from "../../assets/StarOutline";
 import "./index.scss";
+import { quiz} from "../../utils/quiz";
+import {QuestionCard} from "../QuestionCard/QuestionCard";
 export default function Layout() {
   return (
     <div className="layout">
@@ -22,24 +24,7 @@ export default function Layout() {
           </div>
         </div>
         <div className="layout-body">
-          <p>
-            At the start of a standard game of the Monopoly, if you throw a
-            double six, which square would you land on?
-          </p>
-          <div className="options">
-            <div className="option">
-              <button>Electric Company</button>
-            </div>
-            <div className="option">
-              <button>Water Works</button>
-            </div>
-            <div className="option">
-              <button>Chance</button>
-            </div>
-            <div className="option">
-              <button>Community Chest</button>
-            </div>
-          </div>
+          <QuestionCard></QuestionCard>
         </div>
       </div>
     </div>

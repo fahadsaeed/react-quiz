@@ -1,0 +1,17 @@
+.question-card{
+  .options {
+    display: flex;
+    flex-wrap: wrap;
+    .option {
+      flex-basis: 46%;
+      margin: 4px;
+      button {
+        display: block;
+        border-radius: 8px;
+        outline: none;
+        width: 100%;
+      }
+    }
+  }
+
+}

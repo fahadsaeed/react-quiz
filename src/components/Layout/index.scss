@@ -8,20 +8,6 @@
     padding: 30px 5.5rem;
     border: 2px solid #ededed;
     .layout-body {
-      .options {
-        display: flex;
-        flex-wrap: wrap;
-        .option {
-          flex-basis: 46%;
-          margin: 4px;
-          button {
-            display: block;
-            border-radius: 8px;
-            outline: none;
-            width: 100%;
-          }
-        }
-      }
     }
   }
 }
