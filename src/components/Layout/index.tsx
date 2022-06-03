@@ -4,7 +4,20 @@ import StarFill from "../../assets/StarFill";
 import { quiz } from "../../utils/quiz";
 import "./index.scss";
 import { QuestionCard } from "../QuestionCard/QuestionCard";
+import {useState} from "react";
+
 export default function Layout() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [answers, setAnswers] = useState<any>([]);
+
+  const next = (answer: any) =>{
+    setCurrentIndex((currentIndex + 1));
+    const ans = [...answer];
+    ans.push(!!answer);
+    setAnswers(ans);
+  }
+
+
   return (
     <div className="layout">
       <div className="body">
@@ -18,7 +31,7 @@ export default function Layout() {
                 <h3>Question 16 of 20</h3>
               </div>
               <div className="question-type">
-                <span>Entertainment: Board Games</span>
+                <span>{quiz[currentIndex]?.category}</span>
               </div>
               <div className="question-rating">
                 <StarFill />
@@ -29,7 +42,7 @@ export default function Layout() {
             </div>
           </div>
           <div className="layout-body">
-            <QuestionCard></QuestionCard>
+            <QuestionCard question={quiz[currentIndex]} next={(ans: any) => next(ans)}></QuestionCard>
           </div>
           <div className="footer-progress-bar">
             <ProgressBar>
