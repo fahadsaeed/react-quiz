@@ -4,6 +4,7 @@ import { quiz } from "../../utils/quiz";
 import "./index.scss";
 import { QuestionCard } from "../QuestionCard/QuestionCard";
 import {useState} from "react";
+import StarOutline from "../../assets/StarOutline";
 
 export default function Layout() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -35,14 +36,19 @@ export default function Layout() {
               </div>
               <div className="question-rating">
                 <StarFill />
-                <StarFill />
-                {/* <StarOutline /> */}
-                <StarFill />
+                {
+                 (quiz[currentIndex]?.difficulty === 'medium' ||  quiz[currentIndex]?.difficulty === 'hard')
+                    ?  <StarFill /> : <StarOutline />
+                }
+                {
+                  (quiz[currentIndex]?.difficulty === 'hard')
+                      ?  <StarFill /> : <StarOutline />
+                }
               </div>
             </div>
           </div>
           <div className="layout-body">
-            <QuestionCard question={quiz[currentIndex]} next={(ans: any) => next(ans)}></QuestionCard>
+            <QuestionCard question={quiz[currentIndex]} next={(ans: any) => next(ans)} />
           </div>
           <div className="footer-progress-bar">
             <ProgressBar>
